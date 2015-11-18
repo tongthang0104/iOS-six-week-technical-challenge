@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Schedules-->
+        <!--View Controller-->
         <scene sceneID="8XP-4D-5mQ">
             <objects>
                 <viewController id="wZf-m9-p93" sceneMemberID="viewController">
@@ -18,54 +18,82 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What task do you want to do?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qi-tG-buR">
-                                <rect key="frame" x="20" y="170" width="560" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What task do you want to do?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qi-tG-buR">
+                                <rect key="frame" x="20" y="192" width="560" height="24"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="gSA-Hi-Hox"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="When do you want to start?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ca1-50-WLz">
-                                <rect key="frame" x="20" y="338" width="560" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When do you want to start?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ca1-50-WLz">
+                                <rect key="frame" x="20" y="366" width="560" height="24"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="DIz-mc-ttC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your task here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0f9-UN-YBf">
-                                <rect key="frame" x="20" y="202" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your task here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0f9-UN-YBf">
+                                <rect key="frame" x="20" y="224" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a time to do...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-OF-o1f">
-                                <rect key="frame" x="20" y="370" width="560" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a time to do...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFV-OF-o1f">
+                                <rect key="frame" x="20" y="398" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-6k-qkR">
-                                <rect key="frame" x="277" y="438" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ues-pi-Skc">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Button"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6a-Ub-Yej">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6a-Ub-Yej">
                                 <rect key="frame" x="20" y="78" width="560" height="61"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ues-pi-Skc">
-                                <rect key="frame" x="277" y="262" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-6k-qkR">
+                                <rect key="frame" x="277" y="459" width="46" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W0Z-6k-qkR" firstAttribute="centerX" secondItem="iFV-OF-o1f" secondAttribute="centerX" id="9D9-dQ-0x8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3qi-tG-buR" secondAttribute="trailing" id="BcD-16-1dI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ca1-50-WLz" secondAttribute="trailing" id="C00-t0-ybp"/>
+                            <constraint firstItem="3qi-tG-buR" firstAttribute="top" secondItem="y6a-Ub-Yej" secondAttribute="bottom" constant="53" id="EKo-Z9-GJr"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="iFV-OF-o1f" secondAttribute="leading" id="GNd-jO-8Jg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Ca1-50-WLz" secondAttribute="leading" id="HkW-SN-Wbu"/>
+                            <constraint firstItem="Ca1-50-WLz" firstAttribute="top" secondItem="ues-pi-Skc" secondAttribute="bottom" constant="51" id="Mwl-hP-enI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0f9-UN-YBf" secondAttribute="trailing" id="SaD-Ph-jZw"/>
+                            <constraint firstItem="iFV-OF-o1f" firstAttribute="top" secondItem="Ca1-50-WLz" secondAttribute="bottom" constant="8" id="WD1-SW-Mbc"/>
+                            <constraint firstItem="y6a-Ub-Yej" firstAttribute="top" secondItem="Hrb-xp-BCk" secondAttribute="bottom" constant="14" id="WLp-Pg-ViK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="y6a-Ub-Yej" secondAttribute="trailing" id="XQ6-oL-gJ9"/>
+                            <constraint firstItem="ues-pi-Skc" firstAttribute="centerX" secondItem="0f9-UN-YBf" secondAttribute="centerX" id="aze-4W-4pC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iFV-OF-o1f" secondAttribute="trailing" id="ekD-TP-M47"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="3qi-tG-buR" secondAttribute="leading" id="fA3-ZL-wIc"/>
+                            <constraint firstItem="ues-pi-Skc" firstAttribute="top" secondItem="0f9-UN-YBf" secondAttribute="bottom" constant="31" id="gqi-F5-ksQ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="0f9-UN-YBf" secondAttribute="leading" id="kCc-ep-SAr"/>
+                            <constraint firstItem="0f9-UN-YBf" firstAttribute="top" secondItem="3qi-tG-buR" secondAttribute="bottom" constant="8" id="pnR-FV-S4l"/>
+                            <constraint firstItem="qW0-bd-hXC" firstAttribute="top" secondItem="y6a-Ub-Yej" secondAttribute="bottom" constant="412" id="qhE-Cr-aqD"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="y6a-Ub-Yej" secondAttribute="leading" id="uQr-Fm-NHa"/>
+                            <constraint firstItem="W0Z-6k-qkR" firstAttribute="top" secondItem="iFV-OF-o1f" secondAttribute="bottom" constant="31" id="wNV-PN-0yJ"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Schedules" id="PPz-26-Qaw">
+                    <navigationItem key="navigationItem" id="PPz-26-Qaw">
                         <barButtonItem key="rightBarButtonItem" title="Clear" id="MZK-it-II2"/>
                     </navigationItem>
                 </viewController>
