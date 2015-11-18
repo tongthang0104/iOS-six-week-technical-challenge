@@ -6,16 +6,30 @@
 //  Copyright © 2015 Thang. All rights reserved.
 //
 
+
 import UIKit
 
 class AddTaskAndTimeViewController: UIViewController {
 
+    @IBOutlet weak var taskNameTextField: UITextField!
+    @IBOutlet weak var timeTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func addButtonTapped(sender: UIButton) {
+    }
+    
+    
+    @IBAction func clearButtonTapped(sender: UIBarButtonItem) {
+        taskNameTextField.text = ""
+        timeTextField.text = ""
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

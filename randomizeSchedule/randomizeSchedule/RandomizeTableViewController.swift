@@ -10,6 +10,12 @@ import UIKit
 
 class RandomizeTableViewController: UITableViewController {
 
+    //MARK: Properties
+    
+    var task: Task?
+    
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +25,10 @@ class RandomizeTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    //MARK: Action
+    @IBAction func randomizeButtonTapped(sender: UIButton) {
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -27,25 +37,20 @@ class RandomizeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return TaskController.shareController.taskArray.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
 
-        // Configure the cell...
+        
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

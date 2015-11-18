@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Task And Time View Controller-->
         <scene sceneID="8XP-4D-5mQ">
             <objects>
-                <viewController id="wZf-m9-p93" sceneMemberID="viewController">
+                <viewController id="wZf-m9-p93" customClass="AddTaskAndTimeViewController" customModule="randomizeSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hrb-xp-BCk"/>
                         <viewControllerLayoutGuide type="bottom" id="qW0-bd-hXC"/>
@@ -51,9 +51,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ues-pi-Skc">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <rect key="frame" x="285" y="285" width="30" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Schedule" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6a-Ub-Yej">
                                 <rect key="frame" x="20" y="78" width="560" height="61"/>
@@ -63,9 +63,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0Z-6k-qkR">
-                                <rect key="frame" x="277" y="459" width="46" height="30"/>
+                                <rect key="frame" x="285" y="459" width="30" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="wZf-m9-p93" eventType="touchUpInside" id="GI2-YT-Sdr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -94,8 +97,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PPz-26-Qaw">
-                        <barButtonItem key="rightBarButtonItem" title="Clear" id="MZK-it-II2"/>
+                        <barButtonItem key="rightBarButtonItem" title="Clear" id="MZK-it-II2">
+                            <connections>
+                                <action selector="clearButtonTapped:" destination="wZf-m9-p93" id="IVu-nw-GQC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="taskNameTextField" destination="0f9-UN-YBf" id="FaW-kx-CDH"/>
+                        <outlet property="timeTextField" destination="iFV-OF-o1f" id="QkA-au-qZO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5X4-5m-p2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +115,7 @@
         <!--Pairing-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="randomizeSchedule" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="RandomizeTableViewController" customModule="randomizeSchedule" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -122,9 +133,12 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <animations/>
                                     <state key="normal" title="Randomize"/>
+                                    <connections>
+                                        <action selector="randomizeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tSF-tf-4eJ"/>
+                                    </connections>
                                 </button>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="40" id="xlw-eE-wpk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="taskCell" rowHeight="40" id="xlw-eE-wpk" customClass="TaskTableViewCell" customModule="randomizeSchedule" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xlw-eE-wpk" id="0RC-dI-g4e">
@@ -167,7 +181,9 @@
                                             <constraint firstItem="yex-CN-qmr" firstAttribute="top" secondItem="xlw-eE-wpk" secondAttribute="top" id="zMW-lb-dXu"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="wZf-m9-p93" kind="show" id="2pQ-gn-yea"/>
+                                            <outlet property="taskNameLabel" destination="MXH-jR-KjE" id="n3O-lP-X72"/>
+                                            <outlet property="timeLabel" destination="QhA-Ym-R0M" id="uS4-NQ-b5r"/>
+                                            <segue destination="wZf-m9-p93" kind="show" identifier="updateTask" id="2pQ-gn-yea"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
