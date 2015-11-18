@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Task {
+class Task: Equatable {
     var name: String
     var timeToDo: String
     
@@ -18,5 +18,6 @@ class Task {
     }
 }
 
-
-
+func ==(lhs: Task, rhs: Task) -> Bool {
+    return (lhs.name == rhs.name) && (lhs.timeToDo == rhs.timeToDo)
+}

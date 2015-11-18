@@ -166,6 +166,9 @@
                                             <constraint firstAttribute="trailing" secondItem="yex-CN-qmr" secondAttribute="trailing" constant="8" id="NCV-Ng-XP5"/>
                                             <constraint firstItem="yex-CN-qmr" firstAttribute="top" secondItem="xlw-eE-wpk" secondAttribute="top" id="zMW-lb-dXu"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="wZf-m9-p93" kind="show" id="2pQ-gn-yea"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -245,4 +248,7 @@
             <point key="canvasLocation" x="902" y="124"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2pQ-gn-yea"/>
+    </inferredMetricsTieBreakers>
 </document>
