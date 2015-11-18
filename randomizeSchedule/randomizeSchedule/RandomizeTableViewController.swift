@@ -8,12 +8,13 @@
 
 import UIKit
 
-class RandomizeTableViewController: UITableViewController {
+class RandomizeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     //MARK: Properties
     
     var task: Task?
     
+    @IBOutlet weak var tableView: UITableView!
   
     
     override func viewDidLoad() {
@@ -28,6 +29,8 @@ class RandomizeTableViewController: UITableViewController {
     
     //MARK: Action
     @IBAction func randomizeButtonTapped(sender: UIButton) {
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,17 +40,18 @@ class RandomizeTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return TaskController.shareController.taskArray.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath)
-
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableViewCell
         
-
+        let tasks = TaskController.shareController.taskArray[indexPath.row]
+        cell.updateWithTask(tasks)
+    
         return cell
     }
 
@@ -87,14 +91,12 @@ class RandomizeTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+ 
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       if segue.identifier == 
     }
-    */
+    
 
 }

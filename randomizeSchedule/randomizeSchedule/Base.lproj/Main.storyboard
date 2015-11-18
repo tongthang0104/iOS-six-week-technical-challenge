@@ -187,6 +187,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="tJn-uO-Ri0"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="1CB-X2-qI1"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -199,6 +203,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pairing" id="hJL-RU-pBM"/>
+                    <connections>
+                        <outlet property="tableView" destination="pix-Rf-67I" id="7oR-hM-NBr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
