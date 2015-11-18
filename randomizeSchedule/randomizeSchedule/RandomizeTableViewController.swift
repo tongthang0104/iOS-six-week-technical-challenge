@@ -56,17 +56,11 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     }
 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
+ 
 
-    /*
+
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -74,7 +68,7 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.
@@ -94,8 +88,19 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
  
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       if segue.identifier == 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "updateTask" {
+            if let updateTaskDestination = segue.destinationViewController as? AddTaskAndTimeViewController {
+                let _ = updateTaskDestination.view
+                
+                if let selectedRows = tableView.indexPathForSelectedRow?.row {
+                    let tasks = TaskController.shareController.taskArray[selectedRows]
+                    updateTaskDestination.updateTask(tasks)
+                }
+            }
+        }
+        
+        
     }
     
 
