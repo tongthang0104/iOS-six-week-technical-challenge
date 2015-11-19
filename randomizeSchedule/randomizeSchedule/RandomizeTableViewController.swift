@@ -13,6 +13,7 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: Properties
     
     var task: Task?
+    var randomTask : [(Task, Task?)] = []
     
     @IBOutlet weak var tableView: UITableView!
   
@@ -27,10 +28,15 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
+    
     //MARK: Action
     @IBAction func randomizeButtonTapped(sender: UIButton) {
-        
-        
+        randomTask = TaskController.shareController.randomizeTask()
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,18 +45,23 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     }
 
     // MARK: - Table view data source
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return TaskController.shareController.taskRandomize.count
+        return randomTask.count
     }
 
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableViewCell
         
-        let tasks = TaskController.shareController.taskArray[indexPath.row]
-        cell.updateWithTask(tasks)
+        let tasks = self.randomTask[indexPath.row]
+        cell.randomPairing(tasks.0, timeMatch: tasks.1)
     
         return cell
     }
@@ -63,6 +74,8 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+//            let task = TaskController.shareController.taskArray[indexPath.row]
+//            TaskController.shareController.taskRandomize.remove(task)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

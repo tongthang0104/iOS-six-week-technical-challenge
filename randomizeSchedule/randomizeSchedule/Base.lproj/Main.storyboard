@@ -224,8 +224,8 @@
                                             <constraint firstItem="yex-CN-qmr" firstAttribute="top" secondItem="xlw-eE-wpk" secondAttribute="top" id="zMW-lb-dXu"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="task1" destination="MXH-jR-KjE" id="pJR-zt-rME"/>
-                                            <outlet property="task2" destination="QhA-Ym-R0M" id="GtU-FC-CgX"/>
+                                            <outlet property="taskPair" destination="MXH-jR-KjE" id="ZvX-yd-MKp"/>
+                                            <outlet property="timePair" destination="QhA-Ym-R0M" id="eAl-Qe-ciE"/>
                                             <segue destination="wZf-m9-p93" kind="show" identifier="updateTask" id="2pQ-gn-yea"/>
                                         </connections>
                                     </tableViewCell>
