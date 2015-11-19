@@ -23,7 +23,7 @@ class TaskTableViewCell: UITableViewCell {
     func updateWithTask(task: Task) {
         self.task = task
         taskNameLabel.text = task.name
-        timeLabel.text = task.timeToDo
+        timeLabel.text = task.time
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

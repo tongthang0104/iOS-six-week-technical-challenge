@@ -7,39 +7,48 @@
 //
 
 import Foundation
+import CoreData
+
 
 class TaskController {
     
     static let shareController = TaskController()
 
-    var taskArray: [Task] = []
+    var taskRandomize:  [(Task, Task?)] = []
     
-    //Create mock Task
-    var mockTask: [Task] {
-        let task1 = Task(name: "Working on Capstone Project", timeToDo: "12:00 PM")
-        let task2 = Task(name: "Take Shower", timeToDo: "8:00 PM")
-        let task3 = Task(name: "Go to bed", timeToDo: "11:00 PM")
+    var taskArray: [Task] {
         
-        return [task1, task2, task3]
+        let request = NSFetchRequest(entityName: "Task")
+        let moc = Stack.sharedStack.managedObjectContext
+        
+        do {
+            return try moc.executeFetchRequest(request) as! [Task]
+        }catch {
+            return []
+        }
     }
-    
-    init() {
-        self.taskArray = mockTask
-    }
-    
+
     //Add Task
     func addTask(task: Task) {
-        TaskController.shareController.taskArray.append(task)
+        saveToPersistentStorage()
         
     }
     
     //Remove Task
     func removeTask(task: Task) {
-        
-        if let index = taskArray.indexOf(task) {
-            taskArray.removeAtIndex(index)
-        } else {
-            print("error")
+        if let moc = task.managedObjectContext {
+            moc.deleteObject(task)
         }
-    }   
+        saveToPersistentStorage()
+    }
+    
+    func saveToPersistentStorage() {
+        let moc = Stack.sharedStack.managedObjectContext
+        do {
+            try moc.save()
+        } catch {
+            print("Error saving in \(error)")
+        }
+        
+    }
 }

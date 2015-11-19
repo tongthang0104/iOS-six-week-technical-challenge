@@ -25,14 +25,14 @@ class AddTaskAndTimeViewController: UIViewController {
     func updateTask(task: Task)  {
         self.task = task
         taskNameTextField.text = task.name
-        timeTextField.text = task.timeToDo
+        timeTextField.text = task.time
     }
     @IBAction func addButtonTapped(sender: UIButton) {
         if let task = self.task {
             task.name = self.taskNameTextField.text!
-            task.timeToDo = self.timeTextField.text!
+            task.time = self.timeTextField.text!
         } else {
-            let newTask = Task(name: self.taskNameTextField.text!, timeToDo: self.timeTextField.text!)
+            let newTask = Task(name: self.taskNameTextField.text!, time: self.timeTextField.text!)
             TaskController.shareController.addTask(newTask)
             self.task = newTask
         }

@@ -42,7 +42,7 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return TaskController.shareController.taskArray.count
+        return TaskController.shareController.taskRandomize.count
     }
 
     
