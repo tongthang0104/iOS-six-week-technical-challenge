@@ -47,8 +47,7 @@ class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     @IBAction func clearButtonTapped(sender: UIBarButtonItem) {
-        TaskController.shareController.removeAll()
-        
+        taskNameTextField.text = ""
     }
     
     // MARK: -UITableViewDataSource

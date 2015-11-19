@@ -26,23 +26,24 @@ class TaskController {
         }
     }
 
-    func randomizeTask() -> [(Task, Task?)] {
+    func randomizeTask() -> [(Task?, People?)] {
         var tasks = self.taskArray
-        var taskPair = [(Task, Task?)]()
+        var people = PeopleController.shareController.peopleArray
+        var taskPair = [(Task?, People?)]()
         while tasks.count > 1 {
             
             var randomInt = Int(arc4random_uniform(UInt32(tasks.count)))
             let task1 = tasks.removeAtIndex(randomInt)
             
-            randomInt = Int(arc4random_uniform(UInt32(tasks.count)))
-            let task2 = tasks.removeAtIndex(randomInt)
+            randomInt = Int(arc4random_uniform(UInt32(people.count)))
+            let people = people.removeAtIndex(randomInt)
             
-            taskPair.append((task1, task2))
+            taskPair.append((task1, people))
             saveToPersistentStorage()
         }
         
-        if let person = tasks.first {
-            taskPair.append((person, nil))
+        if let firstTask = tasks.first {
+            taskPair.append((firstTask, people.first))
             saveToPersistentStorage()
         }
         
