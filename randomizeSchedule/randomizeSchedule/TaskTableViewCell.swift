@@ -10,21 +10,38 @@ import UIKit
 
 class TaskTableViewCell: UITableViewCell {
 
+    //MARK: Properties
     var task: Task?
-   
-    @IBOutlet weak var taskNameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+
+    @IBOutlet weak var taskPair: UILabel!
+    @IBOutlet weak var timePair: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    func updateWithTask(task: Task) {
-        self.task = task
-        taskNameLabel.text = task.name
-        timeLabel.text = task.time
+    
+    //MARK: randomParing
+    func randomPairing(taskMatch: Task, timeMatch: Task?) {
+        
+       taskPair.text = taskMatch.name
+        
+        if let timeMatch = timeMatch?.time{
+            
+            timePair.text = timeMatch
+            
+        } else {
+            
+            timePair.text = "To be determine"
+        }
     }
+
+//    func updateWithTask(task: Task) {
+//        self.task = task
+//        taskNameLabel.text = task.name
+//        timeLabel.text = task.time
+//    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
