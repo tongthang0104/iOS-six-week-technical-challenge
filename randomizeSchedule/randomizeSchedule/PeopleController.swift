@@ -36,29 +36,6 @@ class PeopleController {
         }
     }
     
-    func randomizePeople() -> [(People, People?)] {
-        var people = self.peopleArray
-        var personPair = [(People, People?)]()
-        while people.count > 1 {
-            
-            var randomInt = Int(arc4random_uniform(UInt32(people.count)))
-            let task1 = people.removeAtIndex(randomInt)
-            
-            randomInt = Int(arc4random_uniform(UInt32(people.count)))
-            let task2 = people.removeAtIndex(randomInt)
-            
-            personPair.append((task1, task2))
-            saveToPersistentStorage()
-        }
-        
-        if let person = people.first {
-            personPair.append((person, nil))
-            saveToPersistentStorage()
-        }
-        
-        return personPair
-    }
-    
     //Add Task
     func addPeople(people: People) {
         saveToPersistentStorage()
