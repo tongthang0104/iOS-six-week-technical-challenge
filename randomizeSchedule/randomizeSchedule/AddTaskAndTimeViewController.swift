@@ -9,9 +9,11 @@
 
 import UIKit
 
-class AddTaskAndTimeViewController: UIViewController {
+class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var task: Task?
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var taskNameTextField: UITextField!
     @IBOutlet weak var timeTextField: UITextField!
     
@@ -27,6 +29,7 @@ class AddTaskAndTimeViewController: UIViewController {
         taskNameTextField.text = task.name
         timeTextField.text = task.time
     }
+    
     @IBAction func addButtonTapped(sender: UIButton) {
         if let task = self.task {
             task.name = self.taskNameTextField.text!
@@ -36,13 +39,26 @@ class AddTaskAndTimeViewController: UIViewController {
             TaskController.shareController.addTask(newTask)
             self.task = newTask
         }
+        tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)
     }
-    
     
     @IBAction func clearButtonTapped(sender: UIBarButtonItem) {
         taskNameTextField.text = ""
         timeTextField.text = ""
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return TaskController.shareController.taskArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("tasksListCell", forIndexPath: indexPath) as! TasksListTableViewCell
+        
+        let tasks = TaskController.shareController.taskArray[indexPath.row]
+        cell.updateWithTask(tasks)
+        return cell
+        
     }
     
     override func didReceiveMemoryWarning() {
