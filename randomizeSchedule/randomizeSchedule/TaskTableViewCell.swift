@@ -9,13 +9,14 @@
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
-
+    
     //MARK: Properties
     var task: Task?
     var people: People?
-
+    
     @IBOutlet weak var taskPair: UILabel!
-    @IBOutlet weak var timePair: UILabel!
+    
+    @IBOutlet weak var userPair: UILabel!
     
     
     override func awakeFromNib() {
@@ -24,30 +25,32 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     //MARK: randomParing
-    func randomPairing(people: People, task: Task?) {
+    func randomPairing(task: Task?, people: People?) {
         
-       taskPair.text = people.firstName
-        
+        if let people = people?.firstName {
+            userPair.text = people
+        }
         if let taskTitle = task?.title{
             
-            timePair.text = taskTitle
+            taskPair.text = taskTitle
             
         } else {
             
-            timePair.text = "To be determine"
+            userPair.text = "To be determine"
+            taskPair.text = "To be determine"
         }
     }
-
-//    func updateWithTask(task: Task) {
-//        self.task = task
-//        taskNameLabel.text = task.name
-//        timeLabel.text = task.time
-//    }
+    
+    //    func updateWithTask(task: Task) {
+    //        self.task = task
+    //        taskNameLabel.text = task.name
+    //        timeLabel.text = task.time
+    //    }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
 }
