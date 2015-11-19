@@ -9,24 +9,18 @@
 import UIKit
 
 class RandomizeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     //MARK: Properties
     
     var task: Task?
-    var randomTask : [(Task, Task?)] = []
-    var randomPeople: [(People, People?)] = []
-    
+    var randomTask : [(Task?, People?)] = []
+
     @IBOutlet weak var tableView: UITableView!
-  
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+       
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -36,78 +30,60 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //MARK: Action
     @IBAction func randomizeButtonTapped(sender: UIButton) {
+        
         randomTask = TaskController.shareController.randomizeTask()
-        randomPeople = PeopleController.shareController.randomizePeople()
+        if TaskController.shareController.taskArray.count > PeopleController.shareController.peopleArray.count {
+            let alert = UIAlertController(title: "Too much tasks", message: "Not enough people to complete", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Delete last Task", style: .Default, handler: { (action) -> Void in
+                if let lastTask = TaskController.shareController.taskArray.last{
+                    TaskController.shareController.remove(lastTask)
+                }
+            })
+        )
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        
         tableView.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return randomTask.count
     }
-
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableViewCell
         
         let tasks = self.randomTask[indexPath.row]
-        let people = self.randomPeople[indexPath.row]
-        cell.randomPairing(people.0, task: tasks.0)
-    
+        
+        cell.randomPairing(tasks.0, people: tasks.1)
+        
         return cell
     }
-
-
- 
-
-
-
-
-
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
     }
     */
-
+    
     /*
     // Override to support conditional rearranging of the table view.
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    // Return false if you do not want the item to be re-orderable.
+    return true
     }
     */
 
- 
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "updateTask" {
-            if let updateTaskDestination = segue.destinationViewController as? AddTaskAndTimeViewController {
-                let _ = updateTaskDestination.view
-                
-                if let selectedRows = tableView.indexPathForSelectedRow?.row {
-                    let tasks = TaskController.shareController.taskArray[selectedRows]
-                    updateTaskDestination.updateTask(tasks)
-                }
-            }
-        }
-        
-        
-    }
     
-
+    
 }
