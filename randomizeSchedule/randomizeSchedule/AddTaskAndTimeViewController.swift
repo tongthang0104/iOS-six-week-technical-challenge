@@ -15,7 +15,7 @@ class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var taskNameTextField: UITextField!
-   
+    
     
     
     override func viewDidLoad() {
@@ -27,26 +27,35 @@ class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UIT
     func updateTask(task: Task)  {
         self.task = task
         taskNameTextField.text = task.title
-     
+        
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
-     
+        
+        if taskNameTextField.text != "" && taskNameTextField.text?.characters.count > 5 {
             let newTask = Task(title: taskNameTextField.text!)
             TaskController.shareController.addTask(newTask)
             self.task = newTask
-        
+        }else {
+            let alert = UIAlertController(title: "Task is not valid", message: "Please add one longer than 5 characters", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Retry", style: .Default, handler: nil))
+            
+            presentViewController(alert, animated: true, completion: nil)
+        }
         tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func clearButtonTapped(sender: UIBarButtonItem) {
-        taskNameTextField.text = ""
+        TaskController.shareController.removeAll()
+        
     }
     
+    // MARK: -UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TaskController.shareController.taskArray.count
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -61,13 +70,12 @@ class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UIT
     // Override to support editing the table view.
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
             // Delete the row from the data source
             let tasks = TaskController.shareController.taskArray[indexPath.row]
             TaskController.shareController.remove(tasks)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
     override func didReceiveMemoryWarning() {
