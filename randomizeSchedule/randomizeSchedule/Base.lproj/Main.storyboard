@@ -192,8 +192,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="taskPair" destination="MXH-jR-KjE" id="ZvX-yd-MKp"/>
-                                            <outlet property="timePair" destination="QhA-Ym-R0M" id="eAl-Qe-ciE"/>
-                                            <segue destination="wZf-m9-p93" kind="show" identifier="updateTask" id="2pQ-gn-yea"/>
+                                            <outlet property="userPair" destination="QhA-Ym-R0M" id="zZx-Iw-2Zj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -241,11 +240,11 @@
             </objects>
             <point key="canvasLocation" x="163" y="-20"/>
         </scene>
-        <!--myItem-->
+        <!--Task-->
         <scene sceneID="F6H-VL-RHn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PKm-7q-cwB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="myItem" id="W4j-s5-ON6"/>
+                    <tabBarItem key="tabBarItem" title="Task" image="Task" id="W4j-s5-ON6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="X1E-el-Rlf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -265,7 +264,7 @@
         <scene sceneID="3F2-9e-Or8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TM9-NQ-278" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Randomize" id="bz5-45-D58"/>
+                    <tabBarItem key="tabBarItem" title="Randomize" image="Shuffle" id="bz5-45-D58"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lBr-L8-LOE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -355,11 +354,11 @@
             </objects>
             <point key="canvasLocation" x="2471" y="-880"/>
         </scene>
-        <!--User-->
+        <!--Users-->
         <scene sceneID="vNs-eZ-BxD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KS8-lq-GBt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" id="Aom-70-JmZ"/>
+                    <tabBarItem key="tabBarItem" title="Users" image="Users" id="Aom-70-JmZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="62t-in-7Fb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -376,7 +375,9 @@
             <point key="canvasLocation" x="1659" y="-880"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="2pQ-gn-yea"/>
-    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="Shuffle" width="29" height="29"/>
+        <image name="Task" width="43" height="43"/>
+        <image name="Users" width="40" height="40"/>
+    </resources>
 </document>
