@@ -13,12 +13,11 @@ import CoreData
 class Task: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
-    convenience init(name: String, time: String, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
+    convenience init(title: String, context: NSManagedObjectContext = Stack.sharedStack.managedObjectContext) {
         
         let entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: context)!
         self.init(entity: entity, insertIntoManagedObjectContext: context)
         
-        self.name = name
-        self.time = time
+        self.title = title
     }
 }

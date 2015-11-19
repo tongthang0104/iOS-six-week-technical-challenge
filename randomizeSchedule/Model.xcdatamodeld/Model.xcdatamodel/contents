@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
+    <entity name="People" representedClassName=".People" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="toPeople" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName=".Task" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toPeople" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="People" inverseName="toTask" inverseEntity="People" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="People" positionX="-198" positionY="-10" width="128" height="88"/>
+        <element name="Task" positionX="-36" positionY="9" width="128" height="73"/>
+    </elements>
+</model>

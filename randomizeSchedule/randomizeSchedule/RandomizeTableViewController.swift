@@ -14,6 +14,7 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     
     var task: Task?
     var randomTask : [(Task, Task?)] = []
+    var randomPeople: [(People, People?)] = []
     
     @IBOutlet weak var tableView: UITableView!
   
@@ -36,6 +37,7 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
     //MARK: Action
     @IBAction func randomizeButtonTapped(sender: UIButton) {
         randomTask = TaskController.shareController.randomizeTask()
+        randomPeople = PeopleController.shareController.randomizePeople()
         tableView.reloadData()
     }
 
@@ -61,7 +63,8 @@ class RandomizeTableViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCellWithIdentifier("taskCell", forIndexPath: indexPath) as! TaskTableViewCell
         
         let tasks = self.randomTask[indexPath.row]
-        cell.randomPairing(tasks.0, timeMatch: tasks.1)
+        let people = self.randomPeople[indexPath.row]
+        cell.randomPairing(people.0, task: tasks.0)
     
         return cell
     }

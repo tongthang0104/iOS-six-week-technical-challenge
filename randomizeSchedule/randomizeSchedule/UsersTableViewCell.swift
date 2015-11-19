@@ -1,5 +1,5 @@
 //
-//  TasksListTableViewCell.swift
+//  UsersTableViewCell.swift
 //  randomizeSchedule
 //
 //  Created by Thang H Tong on 11/18/15.
@@ -8,19 +8,22 @@
 
 import UIKit
 
-class TasksListTableViewCell: UITableViewCell {
+class UsersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var taskNameLabel: UILabel!
-
-    var task: Task?
+    var people: People?
+    
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    
+    
+    func updateWithUser(people: People) {
+        self.people = people
+        self.firstNameLabel.text = people.firstName
+        self.lastNameLabel.text = people.lastName
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    func updateWithTask(task: Task) {
-        self.task = task
-        self.taskNameLabel.text = task.title
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

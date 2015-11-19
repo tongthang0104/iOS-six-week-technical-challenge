@@ -12,6 +12,7 @@ class TaskTableViewCell: UITableViewCell {
 
     //MARK: Properties
     var task: Task?
+    var people: People?
 
     @IBOutlet weak var taskPair: UILabel!
     @IBOutlet weak var timePair: UILabel!
@@ -23,13 +24,13 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     //MARK: randomParing
-    func randomPairing(taskMatch: Task, timeMatch: Task?) {
+    func randomPairing(people: People, task: Task?) {
         
-       taskPair.text = taskMatch.name
+       taskPair.text = people.firstName
         
-        if let timeMatch = timeMatch?.time{
+        if let taskTitle = task?.title{
             
-            timePair.text = timeMatch
+            timePair.text = taskTitle
             
         } else {
             

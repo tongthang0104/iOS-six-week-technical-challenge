@@ -1,5 +1,5 @@
 //
-//  Task+CoreDataProperties.swift
+//  People+CoreDataProperties.swift
 //  randomizeSchedule
 //
 //  Created by Thang H Tong on 11/18/15.
@@ -12,9 +12,10 @@
 import Foundation
 import CoreData
 
-extension Task {
+extension People {
 
-    @NSManaged var title: String?
-    @NSManaged var toPeople: People?
+    @NSManaged var firstName: String?
+    @NSManaged var lastName: String?
+    @NSManaged var toTask: Task?
 
 }

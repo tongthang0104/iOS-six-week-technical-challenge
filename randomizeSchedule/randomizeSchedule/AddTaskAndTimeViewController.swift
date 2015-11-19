@@ -15,7 +15,7 @@ class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var taskNameTextField: UITextField!
-    @IBOutlet weak var timeTextField: UITextField!
+   
     
     
     override func viewDidLoad() {
@@ -26,27 +26,24 @@ class AddTaskAndTimeViewController: UIViewController, UITableViewDataSource, UIT
     
     func updateTask(task: Task)  {
         self.task = task
-        taskNameTextField.text = task.name
-        timeTextField.text = task.time
+        taskNameTextField.text = task.title
+     
     }
     
     @IBAction func addButtonTapped(sender: UIButton) {
-        if let task = self.task {
-            task.name = self.taskNameTextField.text!
-            task.time = self.timeTextField.text!
-        } else {
-            let newTask = Task(name: self.taskNameTextField.text!, time: self.timeTextField.text!)
+     
+            let newTask = Task(title: taskNameTextField.text!)
             TaskController.shareController.addTask(newTask)
             self.task = newTask
-        }
+        
         tableView.reloadData()
         navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func clearButtonTapped(sender: UIBarButtonItem) {
         taskNameTextField.text = ""
-        timeTextField.text = ""
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TaskController.shareController.taskArray.count
     }
